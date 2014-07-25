@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+<title>VoiceDial</title>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="lib/jquery-1.9.js"></script>
+<script type="text/javascript" src="lib/hotjs-src.js"></script>
+<script src="main.js"></script>
+<script src="lang/en.lang.js"></script>
+<script src="lang/zh.lang.js"></script>
+<link href='main.css' rel='stylesheet' type='text/css'>
+<script>
+	$(document).ready(main);
+</script>
+</head>
+<body>
+
+<!-- main page -->
+	<div id="mainpage" class='page'>
+		<div class='header'>
+			<table class='full' cellpadding=0 cellspacing=0>
+				<tr>
+					<td class='l'><button class='header' id='info'><img class='header' src='img/info.png'/></button></td>
+					<td class='m'><span class='I18N' i18n='voicedial'>VoiceDial</span></td>
+					<td class='r'><button class='header' id='settings'><img class='header' src='img/settings.png'/></button></td>
+			</table>
+		</div>
+		<div class='content'>
+			<table class='full' border=0>
+				<tr>
+					<td class='m'><p>
+					<textarea id='inputbox' cols=30 rows=4>欢迎使用会说话的通讯录。只需要按住按钮，说出您的指令（例如：打电话给某人）。</textarea>
+					</p></td>
+				</tr>
+				<tr>
+					<td class='m'>
+						<div id='status'></div>
+					</td>
+				</tr>
+				<tr>
+					<td class='m'>
+						<div id='buttons'></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class='footer'>
+				<button class='footer button green' id='read'><img src='img/speaker.png' class='header'/>朗读</button>
+				<button class='footer button green' id='listen'><img src='img/mic.png' class='header'/>按住说话</button>
+			</div>
+		</div>
+		
+<!-- settings page -->
+	<div id='settings' class='page'>
+		<div class='header'>
+			<table class='full' cellpadding=0 cellspacing=0>
+				<tr>
+					<td class='l'><button class='header backhome'>
+							<img src='img/back.png' class='header' />
+						</button></td>
+					<td class='m'><span class='I18N' i18n='settings'>设置</span></td>
+					<td class='r'><button class='header'><img src='img/null.png' class='header' /></button></td>
+			</table>
+
+		</div>
+		<div class='content'>
+			<div class='opt title'>选择语音</div>
+			<div class='opt comment'>选择您喜欢的语音，有普通话、英语以及各地方言。</div>
+			<div class='opt item'>
+				<select id='voice_name'></select>
+			</div>
+
+			<div class='opt title'>同步联系人名字</div>
+			<div class='opt comment'>对联系人的名字识别更准确。只同步名字，不会上传电话号码等信息。</div>
+			<div class='opt item'>
+				<button id='synccontact' class='button green'>
+					<img src='img/sync.png' class='header' />
+				</button>
+			</div>
+
+			<div class='opt title'>商务合作</div>
+			<div class='opt comment'>
+				RjFun（安杰坊科技有限公司），专业手机应用和手游开发，欢迎商务合作。<br /> 电话：18017739762<br /> 邮件：<a
+					href='mailto:rjfun.mobile@gmail.com'>rjfun.mobile@gmail.com</a>
+			</div>
+			<div class='opt item'>
+				<button id='mailtorjfun' class='button yellow'>
+					<img src='img/mail.png' class='header' />
+				</button>
+				<button id='callrjfun' class='button green'>
+					<img src='img/call.png' class='header' />
+				</button>
+			</div>
+		</div>
+
+		<div class='footer'>
+			<table class='full m'>
+				<tr>
+					<td>
+						<div id='settings_status'></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+
+</body>
+</html>
+
