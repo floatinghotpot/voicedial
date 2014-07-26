@@ -33,14 +33,15 @@
 		<div class='content'>
 			<table class='full' border=0>
 				<tr>
-					<td class='m'><p>
-					<textarea id='inputbox' cols=30 rows=4>欢迎使用会说话的通讯录。只需要按住按钮，说出您的指令（例如：打电话给某人）。</textarea>
-					</p></td>
+					<td class='m'><p><textarea id='inputbox' cols=30 rows=4 class='inputbox'>欢迎使用会说话的通讯录。只需要按住按钮，说出您的指令（例如：打电话给张三、发短信给李四）。</textarea></p></td>
 				</tr>
 				<tr>
 					<td class='m'>
-						<div id='status'></div>
+						<div id='status'>&nbsp;</div>
 					</td>
+				</tr>
+				<tr>
+					<td class='m'><p><input id='inputbox' type='text' class='inputbox'></input></p></td>
 				</tr>
 				<tr>
 					<td class='m'>
@@ -50,7 +51,7 @@
 			</table>
 		</div>
 		<div class='footer'>
-				<button class='footer button green' id='read'><img src='img/speaker.png' class='header'/>朗读</button>
+				<button class='footer button green' id='read'><img src='img/speaker.png' class='header'/>按住朗读</button>
 				<button class='footer button green' id='listen'><img src='img/mic.png' class='header'/>按住说话</button>
 			</div>
 		</div>
@@ -60,7 +61,7 @@
 		<div class='header'>
 			<table class='full' cellpadding=0 cellspacing=0>
 				<tr>
-					<td class='l'><button class='header backhome'>
+					<td class='l'><button class='header pageback'>
 							<img src='img/back.png' class='header' />
 						</button></td>
 					<td class='m'><span class='I18N' i18n='settings'>设置</span></td>
@@ -69,40 +70,136 @@
 
 		</div>
 		<div class='content'>
-			<div class='opt title'>选择语音</div>
-			<div class='opt comment'>选择您喜欢的语音，有普通话、英语以及各地方言。</div>
-			<div class='opt item'>
-				<select id='voice_name'></select>
+			<div class='opt title'>您的语言：<span id='mylang' lang='zh_cn' accent='mandarin'>中文－普通话</span></div>
+			<div class='opt item btnmylang clickable'>
+			<table class='full' cellpadding=0 cellspacing=0><tr>
+			<td class='l comment'>选择您说话的语言，识别更准确。</td>
+			<td class='r'>
+			<button class='header btnmylang'><img src='img/right.png' class='header'/></button>
+			</td></tr>
+			</table>
+			</div>
+			
+			<div class='opt title'>小秘书语音：<span id='voicename' v='xiaoyan'>小燕</span></div>
+			<div class='opt item btnvoicename clickable'>
+			<table class='full' cellpadding=0 cellspacing=0><tr>
+			<td class='l comment'>选择您喜欢的语音。</td>
+			<td class='r'>
+			<button class='header btnvoicename'><img src='img/right.png' class='header'/></button>
+			</td></tr>
+			</table>
 			</div>
 
-			<div class='opt title'>同步联系人名字</div>
-			<div class='opt comment'>对联系人的名字识别更准确。只同步名字，不会上传电话号码等信息。</div>
+			<div class='opt title'>联系人名字加入词表</div>
 			<div class='opt item'>
-				<button id='synccontact' class='button green'>
-					<img src='img/sync.png' class='header' />
-				</button>
+			<table class='full' cellpadding=0 cellspacing=0><tr>
+			<td class='l comment'>把联系人名字加入词表，语音识别更加精准。</td>
+			<td class='r'>
+			<button id='synccontact' class='button green'><img src='img/sync.png' class='header' /></button>
+			</td></tr>
+			</table>
 			</div>
 
-			<div class='opt title'>商务合作</div>
-			<div class='opt comment'>
-				RjFun（安杰坊科技有限公司），专业手机应用和手游开发，欢迎商务合作。<br /> 电话：18017739762<br /> 邮件：<a
-					href='mailto:rjfun.mobile@gmail.com'>rjfun.mobile@gmail.com</a>
-			</div>
+			<div class='opt title'>出品人：RjFun（安杰坊科技有限公司）</div>
 			<div class='opt item'>
-				<button id='mailtorjfun' class='button yellow'>
-					<img src='img/mail.png' class='header' />
-				</button>
-				<button id='callrjfun' class='button green'>
-					<img src='img/call.png' class='header' />
-				</button>
+			<table class='full' cellpadding=0 cellspacing=0><tr>
+			<td class='l comment'>专业手机应用和手游开发。</br>若有商业合作需要，欢迎来电洽谈。</td>
+			<td class='r' nowrap>
+			<button id='mailtorjfun' class='button yellow'><img src='img/mail.png' class='header' /></button>
+			<button id='callrjfun' class='button green'><img src='img/call.png' class='header' /></button>
+			</td></tr>
+			</table>
 			</div>
+
+			<div class='opt title'>致谢：科大讯飞</div>
+			<div class='opt comment'>本软件使用语音云服务。需连接网络语音识别才能正常使用。</div>
 		</div>
 
 		<div class='footer'>
 			<table class='full m'>
 				<tr>
 					<td>
-						<div id='settings_status'></div>
+						<div id='settings_status' class='status'></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+
+<!-- language page -->
+	<div id='mylangpage' class='page'>
+		<div class='header'>
+			<table class='full' cellpadding=0 cellspacing=0>
+				<tr>
+					<td class='l'><button class='header pageback'>
+							<img src='img/back.png' class='header' />
+						</button></td>
+					<td class='m'><span>您说话的语言</span></td>
+					<td class='r'><button class='header'><img src='img/null.png' class='header' /></button></td>
+			</table>
+
+		</div>
+		<div class='content'>
+			<div class='opt title'>您平时说话的语言</div>
+			<ul>
+			<li class='langitem ' lang='zh_cn' accent='mandarin'>中文－普通话</li>
+			<li class='langitem' lang='zh_cn' accent='cantonese'>中文－广东话</li>
+			<li class='langitem' lang='en_us' accent=''>英语</li>
+			</ul>
+		</div>
+
+		<div class='footer'>
+			<table class='full m'>
+				<tr>
+					<td>
+						<div id='lang_status' class='status'></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+
+<!-- voice page -->
+	<div id='voicenamepage' class='page'>
+		<div class='header'>
+			<table class='full' cellpadding=0 cellspacing=0>
+				<tr>
+					<td class='l'><button class='header pageback'>
+							<img src='img/back.png' class='header' />
+						</button></td>
+					<td class='m'><span>小秘书语音</span></td>
+					<td class='r'><button class='header'><img src='img/null.png' class='header' /></button></td>
+			</table>
+
+		</div>
+		<div class='content'>
+			<div class='opt title'>中文</div>
+			<ul>
+			<li class='voiceitem ' v='xiaoyan'>小燕</li>
+			<li class='voiceitem' v='xiaoyu'>北京小宇</li>
+			<li class='voiceitem' v='vixl'>台湾小莉</li>
+			<li class='voiceitem' v='vinn'>小女孩楠楠</li>
+			<li class='voiceitem' v='vixr'>四川小蓉</li>
+			<li class='voiceitem' v='vixm'>广东小梅</li>
+			<li class='voiceitem' v='vixk'>河南小坤</li>
+			</ul>
+			
+			<div class='opt title'>英语</div>
+			<ul>
+			<li class='voiceitem' v='Catherine'>Catherine</li>
+			<li class='voiceitem' v='henry'>Henry</li>
+			<li class='voiceitem' v='vimary'>Mary</li>
+			</ul>
+			
+		</div>
+
+		<div class='footer'>
+			<table class='full m'>
+				<tr>
+					<td>
+						<div id='voice_status' class='status'></div>
 					</td>
 				</tr>
 			</table>

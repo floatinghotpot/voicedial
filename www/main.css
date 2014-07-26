@@ -61,7 +61,7 @@ img.header {
 	margin: 0;
 	display: inline-block;
 }
-button#info, .backhome {
+button#info, .pageback {
 	left:0px;
 }
 button#settings {
@@ -81,26 +81,30 @@ div.footer {
 div.content {
 	overflow: scroll;
 	width: 100%;
-	height: 100%;
 }
-textarea#inputbox {
+.inputbox {
 	width: 90%;
 	background: gray;
-	color: cyan;
+	color: #eeeeee;
+	border:1px solid silver;
 	font-size: 18px;
+	padding: 8px;
+}
+input#inputbox {
+	text-align:center;
 }
 button.footer {
 	position: absolute;
 	bottom: 0px;
-	height: 88px;
+	height: 84px;
 	font-size: 24px;
-	width: 48%;
+	width: 47%;
 }
 button#read {
-	left: 1%;
+	left: 2%;
 }
 button#listen {
-	right: 1%;
+	right: 2%;
 }
 button.phone {
 	font-size: 24px;
@@ -109,7 +113,6 @@ button.phone {
 }
 
 div.opt {
-	width: 99%;
 	padding: 5px;
 	vertical-align: middle;
 	text-shadow: 1px 1px 1px black;
@@ -119,7 +122,7 @@ div.opt.title {
 	border:1px solid black;
 	text-align: left;
 }
-div.opt.comment {
+.comment {
 	font-size: 16px;
 	text-align: left;
 	line-height: 140%;
@@ -127,6 +130,23 @@ div.opt.comment {
 div.opt.item {
 	text-align: right;
 }
+li.langitem, li.voiceitem {
+	width: 80%;
+	padding: 5px;
+	margin: 5px;
+	border: 1px silver dotted;
+	list-style-type: none;
+	cursor: pointer; 
+	cursor: hand;
+}
+.clickable {
+	cursor: pointer; 
+	cursor: hand;
+}
+.checked {
+	background:url(img/yes.png) no-repeat right;
+}
+
 a {
 	color: cyan;
 }
@@ -289,9 +309,10 @@ div.dialog {
 }
 div.popup {
 	position: absolute;
-    background: url(img/bg_linen.png) /*#666666*/;
+    /*background: #666666;*/
+    background: url(img/bg_linen.png);
     color: white;
-	opacity: 1;
+	opacity: 0.95;
 }
 button.dialog {
     width: 96px;
@@ -307,15 +328,10 @@ table.dialog {
 	padding: 0px;
 	margin: 0px;
 	spacing: 0px;
-	-moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -khtml-border-radius: 30px;
     border-radius: 30px;
-	-webkit-box-shadow:5px 5px 10px black;
-	-moz-box-shadow:5px 5px 10px black;
-    box-shadow:5px 5px 10px black;
+    background: #666666;
     color: #eeeeee;
-    background: url(img/bg_linen.png);
+    border:1px solid silver;
 }
 div.dlg11 {
 	text-align: center;

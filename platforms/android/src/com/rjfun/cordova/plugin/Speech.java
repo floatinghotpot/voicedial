@@ -250,8 +250,9 @@ public class Speech extends CordovaPlugin implements RecognizerListener, Synthes
         //rec.setParameter(SpeechConstant.ASR_AUDIO_PATH,"./sdcard/asr.pcm");
 
         if (options != null) {
-            while (options.keys().hasNext()) {
-                String key = (String) options.keys().next();
+        	Iterator it = options.keys();
+            while (it.hasNext()) {
+                String key = (String) it.next();
                 String value = options.optString(key);
                 rec.setParameter(key, value);
             }
